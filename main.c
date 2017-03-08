@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/15 16:50:10 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/07 18:14:25 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/07 20:57:10 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int		main(void)
 			"####\n"	//5
 			"....\n"	//5
 			"....\n"	//5
-			"....\n"	//5
-			"\n"		//1			1
+			"....\n";	//5
+/*			"\n"		//1			1
 			"#...\n"	//5
 			"#...\n"	//5
 			"#...\n"	//5
@@ -36,7 +36,7 @@ int		main(void)
 			".###\n"
 			"....\n"
 			"....\n";	//5
-/*
+
 			"\n"		//1			2
 			"##..\n"	//5
 			"##..\n"	//5
@@ -172,14 +172,16 @@ int		main(void)
 //				printf("-----\ncount_shapes passed\n-----\n# of shapes = %i\n", ft_count_shapes(str));
 				ft_print_store(ft_create_store(str, ft_count_shapes(str)), ft_count_shapes(str));
 //				printf("\n$$$$$$$$$$$$$$$$$$$i$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
-				ft_print_grid(ft_makegrid(n));
+		//extra		ft_print_grid(ft_makegrid(n));
 //				printf("\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
 			//	while (ft_fit(ft_fillblank(ft_makegrid(n), n), ft_create_store(str, ft_count_shapes(str)), ft_count_shapes(str)) != 1)
-				while (n < 6)
+				while (n < 5)
 				{
-					if (ft_fit((ft_makegrid(n)), ft_create_store(str, ft_count_shapes(str)), ft_count_shapes(str)) != 1)
+					ft_print_grid(ft_makegrid(n));
+	//old fit		if (ft_fit((ft_makegrid(n)), ft_create_store(str, ft_count_shapes(str)), ft_count_shapes(str)) != 1)
 					//if (n == 5)
 					//	break;
+					if (ft_fit1(ft_makegrid(n), ft_create_store(str, ft_count_shapes(str)), n) != 1)
 					printf("FIT TOO SMALL !!!! [%i]\n", n);
 					n++;
 				}

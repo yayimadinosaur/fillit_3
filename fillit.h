@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 18:34:45 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/07 17:05:27 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/07 20:57:17 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,15 @@ t_grid		**ft_makegrid(int n);
 void		ft_fillblank(t_grid **grid, int n);		//notsure if needed in header (STATIC?)
 void		ft_print_grid(t_grid **grid);
 
-int			ft_fit(t_grid **grid, t_store **store, int grid_range);
-int			ft_chk_pts(t_grid **grid, t_store **store, int grid_range, int k);
-void		ft_place(t_grid **grid, t_store **store, int grid_range, int k);
+int			ft_fit1(t_grid **grid, t_store **store, int grid_range);
+int			ft_scan_grid1(t_grid **grid, int stored_index, int grid_range, int z);
+void		ft_place1(t_grid **grid, t_store **store, int k, int grid_range);
+
+//old	int			ft_fit(t_grid **grid, t_store **store, int grid_range);
+//old	int			ft_chk_pts(t_grid **grid, t_store **store, int grid_range, int k);
+//old	void		ft_place(t_grid **grid, t_store **store, int grid_range, int k);
+
+
 //void	ft_lstadd(t_list **alst, t_list *new);							//not used
 //t_list	*ft_lstnew(void const *content, size_t content_size);			//not used
 //void	*ft_memmove(void *dst, const void *src, size_t len);			//not used
