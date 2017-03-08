@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/05 17:32:00 by wfung             #+#    #+#             */
-/*   Updated: 2017/02/26 18:59:36 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/07 18:14:59 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,39 +46,39 @@ int		ft_chk_count(char *str, int i, int j, int k) // all, #, \n
 {
 	if (ft_strlen(str) < 20 || ft_strlen(str) > 545) //chk min + max char count
 	{
-		printf("i count = %i\n", i);
+//		printf("i count = %i\n", i);
 		return (0);
 	}
 	if (i == 20)
 	{
 		if (j / 4 != 1 || k / 4 != 1)
 		{
-			printf("missing stuff i = %i j = %i k = %i\n", i, j, k);
+//			printf("missing stuff i = %i j = %i k = %i\n", i, j, k);
 			return (0);
 		}
 	}
 	if (i > 20)
 	{
-		printf("[i > 20] i = %i\n# of shapes = %i + 1\n", i, (i - 20) / 21);
-		printf("j = %i k = %i\n", j, k);
+//		printf("[i > 20] i = %i\n# of shapes = %i + 1\n", i, (i - 20) / 21);
+//		printf("j = %i k = %i\n", j, k);
 		if ((j - 4) / 4 != (i - 20) / 21 && (j - 4) / 4 != (i - 20) % 21)
 		{
-			printf("j count off\n");
+//			printf("j count off\n");
 			return (0);
 		}
 		if ((k - 4) / 5 != (i - 20) / 21 && (k - 4) / 5 != (i - 20) % 21)
 		{
-			printf("k count off\n");
+//			printf("k count off\n");
 			return (0);
 		}
 		if ((i - 20) % 21 != 0)
 		{
-			printf("not enough input count\n");
+//			printf("not enough input count\n");
 			return (0);
 		}
 		if (ft_chk_block(str + 20) != 1)
 		{
-			printf("chk_block failed!\n");
+//			printf("chk_block failed!\n");
 			return (0);
 		}
 	}
@@ -122,7 +122,7 @@ int		ft_chk_input(char *str)
 	i = 0;
 	if (ft_chk_char(str) != 1)
 	{
-		printf("-----\nchk_input chk_char failed\n----");
+//		printf("-----\nchk_input chk_char failed\n----");
 		return (0);
 	}
 	printf("-----\nchk_input chk_char passed\n");

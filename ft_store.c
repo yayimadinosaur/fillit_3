@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/05 16:00:49 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/06 20:27:52 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/07 18:14:53 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef struct		s_store
 	int				*stored;
 }					t_store;
 */
+
+//COMMENTED OUT PRINTF IN STORE FOR CLEARER RESULTS
 t_store		**ft_store_auto(t_store **store, char *str)
 {
 	int		i;
@@ -41,7 +43,7 @@ t_store		**ft_store_auto(t_store **store, char *str)
 		if (str[i] == '#')
 		{
 			store[x]->stored[j] = i - k;
-			printf("[j] = %i [k] = %i [i] = %i result = [%i]\n", j, k, i, i - k);
+	//		printf("[j] = %i [k] = %i [i] = %i result = [%i]\n", j, k, i, i - k);
 			j++;
 		}
 		if (j == 4)
@@ -63,7 +65,7 @@ t_store		**ft_create_store(char *str, int shape_count)
 	t_store	**head;
 
 	i = 0;
-	printf("create_store start\nshape_count = [%i]\n", shape_count);
+//	printf("create_store start\nshape_count = [%i]\n", shape_count);
 	if (shape_count == 0)
 		return (0);
 	else
@@ -71,10 +73,10 @@ t_store		**ft_create_store(char *str, int shape_count)
 			return (0);	
 	store[shape_count] = 0;
 	head = store;
-	printf("head store\n");
+//	printf("head store\n");
 	while (i < shape_count)
 	{
-		printf("store[i] going i = %i\n", i);
+//		printf("store[i] going i = %i\n", i);
 		if (!(store[i] = (t_store*)malloc(sizeof(t_store) * (1))))
 			return (0);
 		if (!(store[i]->stored = (int*)malloc(sizeof(int) * (5))))
@@ -82,7 +84,7 @@ t_store		**ft_create_store(char *str, int shape_count)
 		store[i]->stored[4] = 0;
 		i++;
 	}
-	printf("start store_auto\n");
+//	printf("start store_auto\n");
 	ft_store_auto(head, str);
 	printf("end storeauto\n");
 	return (head);	
@@ -102,7 +104,7 @@ void		ft_print_store(t_store **store, int count)
 	{
 		while (j < 5)
 		{
-			printf("shape [%i], hash# [%i], value [%i]\n", i, j, store[i]->stored[j]);
+	//		printf("shape [%i], hash# [%i], value [%i]\n", i, j, store[i]->stored[j]);
 			j++;
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/15 16:50:10 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/06 21:09:24 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/07 18:14:25 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,23 +166,28 @@ int		main(void)
 		printf("main: chk_input finished\n-----\n");
 		if (ft_matchx(str) == 1)
 		{
-			printf("-----\nmatchx passed\n");
+//			printf("-----\nmatchx passed\n");
 			if (ft_count_shapes(str) > 0)
 			{
-				printf("-----\ncount_shapes passed\n-----\n# of shapes = %i\n", ft_count_shapes(str));
+//				printf("-----\ncount_shapes passed\n-----\n# of shapes = %i\n", ft_count_shapes(str));
 				ft_print_store(ft_create_store(str, ft_count_shapes(str)), ft_count_shapes(str));
-				printf("\n$$$$$$$$$$$$$$$$$$$i$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
-				ft_print_grid(ft_fillblank(ft_makegrid(n), n));
-				printf("\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
-
-	/*		while (ft_fit(ft_fillblank(ft_makegrid(n), n), ft_create_store(str, ft_count_shapes(str)), ft_count_shapes(str)) != 1)
+//				printf("\n$$$$$$$$$$$$$$$$$$$i$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
+				ft_print_grid(ft_makegrid(n));
+//				printf("\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
+			//	while (ft_fit(ft_fillblank(ft_makegrid(n), n), ft_create_store(str, ft_count_shapes(str)), ft_count_shapes(str)) != 1)
+				while (n < 6)
 				{
+					if (ft_fit((ft_makegrid(n)), ft_create_store(str, ft_count_shapes(str)), ft_count_shapes(str)) != 1)
+					//if (n == 5)
+					//	break;
 					printf("FIT TOO SMALL !!!! [%i]\n", n);
 					n++;
 				}
-				if (ft_fit(ft_fillblank(ft_makegrid(n), n), ft_create_store(str, ft_count_shapes(str)), ft_count_shapes(str)) == 1)
-					printf("done recursion? n = [%i]\n", n);
-	*/		}
+			//	if (ft_fit(ft_fillblank(ft_makegrid(n), n), ft_create_store(str, ft_count_shapes(str)), ft_count_shapes(str)) == 1)
+			//		printf("done recursion? n = [%i]\n", n);
+			//	else
+			//		printf("fail recursion! n = [%i]\n", n);
+			}
 			else
 			{
 				printf("*****\ncount_shapes failed\n*****\n");

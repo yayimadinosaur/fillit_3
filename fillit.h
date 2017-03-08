@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 18:34:45 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/06 20:55:19 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/07 17:05:27 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char		*ft_shape_letter(char *str, int n);
 int			ft_count_shapes(char *str);
 
 t_grid		**ft_makegrid(int n);
-t_grid		**ft_fillblank(t_grid **grid, int n);		//notsure if needed in header (STATIC?)
+void		ft_fillblank(t_grid **grid, int n);		//notsure if needed in header (STATIC?)
 void		ft_print_grid(t_grid **grid);
 
 int			ft_fit(t_grid **grid, t_store **store, int grid_range);

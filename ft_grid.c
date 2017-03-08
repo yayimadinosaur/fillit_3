@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/05 18:13:55 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/06 21:00:23 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/07 18:14:48 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,24 @@ t_grid	**ft_makegrid(int n)
 	int		i;
 
 	i = 0;
-	printf("start [makegrid]\n-----\n");
+//	printf("start [makegrid]\n-----\n");
 	if (!(buff = (t_grid**)malloc(sizeof(t_grid*) * (n + 1))))
 		return (0);
 	head = buff;
 	while (i < n)
 	{
-		printf("created row %i\n", i);
+//		printf("created row %i\n", i);
 		if (!(buff[i] = (t_grid*)malloc(sizeof(t_grid) * (n + 1))))
 			return (0);
 		i++;
 	}
 	buff[i] = 0;
-	printf("finished [makegrid]\n-----\n");
+	printf("finished [makegrid] grid size = [%i]\n-----\n", n);
+	ft_fillblank(head, n);
 	return (head);
 }
 
-t_grid	**ft_fillblank(t_grid **grid, int n)
+void	ft_fillblank(t_grid **grid, int n)
 {
 	int		i;
 	int		j;
@@ -44,7 +45,7 @@ t_grid	**ft_fillblank(t_grid **grid, int n)
 	i = 0;
 	j = 0;
 	k = 46;
-	printf("start [fillblank]\n-----\n");
+//	printf("start [fillblank]\n-----\n");
 	while (i < n)
 	{
 		while (j < n)
@@ -57,9 +58,10 @@ t_grid	**ft_fillblank(t_grid **grid, int n)
 		j = 0;
 		i++;
 	}
-	printf("i is now %i\n", i);
+//	printf("i is now %i\n", i);
 	printf("end [fillblank]\n-----\n");
-	return (grid);
+//	return (grid);
+	return ;
 }
 
 //left print here for testing purposes
