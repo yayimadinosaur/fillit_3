@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/05 16:00:49 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/07 18:45:38 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/08 17:55:38 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ t_store		**ft_create_store(char *str, int shape_count)
 		if (!(store[i]->stored = (int*)malloc(sizeof(int) * (5))))
 			return (0);
 		store[i]->stored[4] = 0;
+		store[i]->marked == 'N';		//created shape marked N for not placed by default
 		i++;
 	}
 //	printf("start store_auto\n");
