@@ -6,27 +6,13 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 15:49:47 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/08 19:30:08 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/08 20:15:05 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		ft_chk_store(t_store **store)		//checks which index section of store is marked
-{
-	int		k;
-
-	k = 0;
-	while (store[k] != 0)
-	{
-		if (store[k].marked == 'N')
-			return (k);		//return piece not placed (marked N)
-		k++;
-	}
-	return (26);		//all pieces of store are placed (marked Y)
-}
-
-int		ft_place2(t_store **store, )			//checks which one isnt placed
+int		ft_place2(t_store **store, )				//places piece
 {
 
 }
@@ -61,19 +47,37 @@ int		ft_chk_index(t_grid **grid, int i, int j, t_store **store)	//checks the ent
 	return (y - 1);		//all 4 parts of index can be placed
 }
 
-int		ft_chk_pts2(t_grid **grid, int i, int j, t_store **store)
+int		ft_chk_mark(t_store **store)		//checks which index section of store is marked
+{
+	int		k;
+
+	k = 0;
+	while (store[k] != 0)
+	{
+		if (store[k].marked == 'N')
+			return (k);		//return piece not placed (marked N)
+		k++;
+	}
+	return (26);		//all pieces of store are placed (marked Y)
+}
+
+int		ft_chk_pts2(t_grid **grid, int i, int j, t_store **store)	//checks if placed
 {
 	int		k;
 	int		x;
+	int		z;
 
 	x = 0;
-	k = ft_chk_store(store);		//check which part of stored index isnt placed (marked 'N')
+	k = ft_chk_mark(store);		//check which part of stored index isnt placed (marked 'N')
+	if (k == 26)
+		return (1);					//store is all placed
 	while (x < 4)
 	{
 		while (grid[i] != 0)
 		{
 			while (grid[i][j].content != 0)
 			{
+				ft_chk_index()
 				j++;
 			}
 			j = 0;
@@ -107,11 +111,12 @@ int		ft_fit2(t_grid **grid, t_store **store)
 		j = 0;
 		i++;
 	}
-	if (ft_store_chk(store) == 1)		//checks store if all are placed (marked Y)
+	//NOT SURE IF THIS PART IS NEEDED IF ft_chk_store checks store already
+/*	if (ft_store_chk(store) == 1)		//checks store if all are placed (marked Y)
 	{
 		printf("fit2 all pieces placed; please chk solution\n");
 		return (1);
 	}
-	printf("fit2 map could not fit all shapes\n");
+*/	printf("fit2 map could not fit all shapes\n");
 	return (0);
 }
