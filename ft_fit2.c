@@ -6,45 +6,50 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 15:49:47 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/08 20:16:38 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/09 21:30:23 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		ft_place2(t_store **store, )				//places piece
+int		ft_remove()
 {
 
 }
 
-int		ft_chk_index(t_grid **grid, int i, int j, t_store **store)	//checks the entire shape
+int		ft_place2(t_store **store, )				//places piece
 {
-	int		k;
-	int		x;
-	int		y;		//decrement counter for each index
 
-	k = 0;
+}
+//PROBLEM PROBLEM PROBLEM PROBLEM
+int		ft_chk_index(t_grid *grid[i], int j, t_store **store, t_store s_index)	//checks the entire shape
+{
+	int		x;		//store[s_index]->stored[x]
+	int		y;		//decrement counter for each index
+	t_grid	*z;		//match ptr of grid[i]	for reset
+	int		k;		//match j		for reset
+
+	z = grid[i];
+	k = j;
 	x = 0;
-	y = store[k]->store[x] + 1;			//adding 1 extra because of norm space (y-- inside of 3rd while)
 	while (x < 4)
 	{
-		y = store[k]->store[x];
+		y = store[s_index]->store[x] + 1;		//adding 1 extra because of norm space (y-- inside of 3rd while)
 		while (grid[i] != 0)
 		{
 			while (grid[i][j].content != 0 && y--)
 			{
-				if (y == 0)
-				{
-					if (grid[i][j].content != '.')
+				if (y == 0 && grid[i][j].content != '.')
 						return (0);					//grid position is not empty
-				}	
+				}
 				j++;
 			}
 			i++;
 			j = 0;
 		}
+		x++;
 	}
-	return (y - 1);		//all 4 parts of index can be placed
+	return (1);		//all 4 parts of index can be placed; RETURN INDEX VALUE? (choosing 1 for now)
 }
 
 int		ft_chk_mark(t_store **store)		//checks which index section of store is marked
@@ -61,37 +66,38 @@ int		ft_chk_mark(t_store **store)		//checks which index section of store is mark
 	return (26);		//all pieces of store are placed (marked Y)
 }
 
-int		ft_chk_pts2(t_grid **grid, int i, int j, t_store **store)	//checks if placed
+int		ft_chk_pts2(t_grid **grid, int i, int j, t_store **store)	//checks if placed from start to 4th
 {
 	int		k;
 	int		x;
-	int		z;
+	int		y;			//saving i for reset
+	int		z;			//saving j for reset
 
 	x = 0;
-	k = ft_chk_mark(store);		//check which part of stored index isnt placed (marked 'N')
-	if (k == 26)
-		return (1);					//store is all placed
-	while (x < 4)
+	while (grid[y] != 0)
 	{
-		while (grid[i] != 0)
+		y = i;
+		z = j;
+		k = ft_chk_mark(store);		//check which part of stored index isnt placed (marked 'N')
+		if (k == 26)
+			return (1);					//store is all placed
+		while (grid[y][z].content != 0)
 		{
-			while (grid[i][j].content != 0)
-			{
-				ft_chk_index()
-				j++;
-			}
-			j = 0;
-			i++;
+			if (ft_chk_index(grid[y], z, store, k) != 1)	//CAN WE PASS IN THIS?
+				return (0);			//FAIL CONDITION??? /////////
+			y++;
 		}
-		x++;
+		z = 0;
+		y++;
 	}
 	return (1);				//checked shape
+}
 
-int		ft_fit2(t_grid **grid, t_store **store)
+int		ft_fit2(t_grid **grid, t_store **store)		//searches for next .
 {
 	int		i;
 	int		j;
-	int		z;		//z = chk_store return value (0-25 for store index; 27 for all done)
+	int		z;		//z = chk_store return value (0-25 for store index; 26 for all done)
 
 	i = 0;
 	j = 0;
@@ -101,10 +107,8 @@ int		ft_fit2(t_grid **grid, t_store **store)
 		{
 			if (grid[i][j].content == '.')			//if location is empty, then check
 			{
-				if (ft_chk_pts2(grid, i, j, store) != 0)
+				if (ft_chk_pts2(grid, i, j, store) != 0)						//STARTING LOCATION OF CHECK
 					ft_place2(grid, i, j, store);	//place piece (NEED TO KNOW WHICH)
-				else
-					return (1);
 			}
 			j++;
 		}

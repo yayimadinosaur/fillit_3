@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 18:34:45 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/07 20:57:17 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/09 19:24:09 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,14 @@ typedef	struct		s_store			//struct for stored array for shape parsing
 	int				shape;
 	char			marked;
 	int				*stored;
+/*	int				x0;				//use struct in case stored is **ptr;
+	int				y0;
+	int				x1;
+	int				y1;
+	int				x2;
+	int				x2;
+	int				x3;
+	int				y3;*/
 }					t_store;
 
 void		ft_putstr(char *str);	//for printing grid within norm
