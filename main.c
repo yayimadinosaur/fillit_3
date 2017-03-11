@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/15 16:50:10 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/08 19:50:48 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/10 17:23:47 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,10 @@ int		main(void)
 			"....\n"
 			"";		//1			27
 */
+
+/*
+ * TESTING FT_SAVE
+ *
 	if (ft_chk_input(str) == 1)
 	{
 		printf("main: chk_input finished\n-----\n");
@@ -206,6 +210,9 @@ int		main(void)
 	printf("total strlen is %zu\n", ft_strlen(str));
 	return (0);
 }
+
+*/
+
 
 /* sample.fillit from fillit pdf
 

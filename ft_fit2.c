@@ -6,30 +6,22 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 15:49:47 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/09 21:30:23 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/10 16:26:32 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		ft_remove()
-{
+int		ft_remove();
 
-}
+int		ft_place2(t_store **store, );				//places piece
 
-int		ft_place2(t_store **store, )				//places piece
-{
-
-}
 //PROBLEM PROBLEM PROBLEM PROBLEM
 int		ft_chk_index(t_grid *grid[i], int j, t_store **store, t_store s_index)	//checks the entire shape
 {
 	int		x;		//store[s_index]->stored[x]
 	int		y;		//decrement counter for each index
-	t_grid	*z;		//match ptr of grid[i]	for reset
-	int		k;		//match j		for reset
 
-	z = grid[i];
 	k = j;
 	x = 0;
 	while (x < 4)
@@ -66,7 +58,7 @@ int		ft_chk_mark(t_store **store)		//checks which index section of store is mark
 	return (26);		//all pieces of store are placed (marked Y)
 }
 
-int		ft_chk_pts2(t_grid **grid, int i, int j, t_store **store)	//checks if placed from start to 4th
+int		ft_chk_pts2(t_grid **grid, int i, int j, t_store **store)	//checks if shape placed
 {
 	int		k;
 	int		x;
@@ -83,7 +75,7 @@ int		ft_chk_pts2(t_grid **grid, int i, int j, t_store **store)	//checks if place
 			return (1);					//store is all placed
 		while (grid[y][z].content != 0)
 		{
-			if (ft_chk_index(grid[y], z, store, k) != 1)	//CAN WE PASS IN THIS?
+			if (ft_chk_index(grid, y, store, k) != 1)	//CAN WE PASS IN THIS?
 				return (0);			//FAIL CONDITION??? /////////
 			y++;
 		}
@@ -107,7 +99,7 @@ int		ft_fit2(t_grid **grid, t_store **store)		//searches for next .
 		{
 			if (grid[i][j].content == '.')			//if location is empty, then check
 			{
-				if (ft_chk_pts2(grid, i, j, store) != 0)						//STARTING LOCATION OF CHECK
+				if (ft_chk_pts2(grid, i, j, store) != 0)			//STARTING LOCATION OF CHECK
 					ft_place2(grid, i, j, store);	//place piece (NEED TO KNOW WHICH)
 			}
 			j++;
@@ -115,12 +107,6 @@ int		ft_fit2(t_grid **grid, t_store **store)		//searches for next .
 		j = 0;
 		i++;
 	}
-	//NOT SURE IF THIS PART IS NEEDED IF ft_chk_store checks store already
-/*	if (ft_store_chk(store) == 1)		//checks store if all are placed (marked Y)
-	{
-		printf("fit2 all pieces placed; please chk solution\n");
-		return (1);
-	}
-*/	printf("fit2 map could not fit all shapes\n");
+	printf("fit2 map could not fit all shapes\n");
 	return (0);
 }

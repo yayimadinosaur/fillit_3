@@ -6,35 +6,11 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/05 18:13:55 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/07 18:47:35 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/10 16:48:43 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-t_grid	**ft_makegrid(int n)
-{
-	t_grid	**head;
-	t_grid	**buff;
-	int		i;
-
-	i = 0;
-//	printf("start [makegrid]\n-----\n");
-	if (!(buff = (t_grid**)malloc(sizeof(t_grid*) * (n + 1))))
-		return (0);
-	head = buff;
-	while (i < n)
-	{
-//		printf("created row %i\n", i);
-		if (!(buff[i] = (t_grid*)malloc(sizeof(t_grid) * (n + 1))))
-			return (0);
-		i++;
-	}
-	buff[i] = 0;
-	printf("finished [makegrid] grid size = [%i]\n-----\n", n);
-	ft_fillblank(head, n);
-	return (head);
-}
 
 void	ft_fillblank(t_grid **grid, int n)
 {
@@ -64,6 +40,29 @@ void	ft_fillblank(t_grid **grid, int n)
 	return ;
 }
 
+t_grid	**ft_makegrid(int n)
+{
+	t_grid	**head;
+	t_grid	**buff;
+	int		i;
+
+	i = 0;
+//	printf("start [makegrid]\n-----\n");
+	if (!(buff = (t_grid**)malloc(sizeof(t_grid*) * (n + 1))))
+		return (0);
+	head = buff;
+	while (i < n)
+	{
+//		printf("created row %i\n", i);
+		if (!(buff[i] = (t_grid*)malloc(sizeof(t_grid) * (n + 1))))
+			return (0);
+		i++;
+	}
+	buff[i] = 0;
+	printf("finished [makegrid] grid size = [%i]\n-----\n", n);
+	ft_fillblank(head, n);
+	return (head);
+}
 //left print here for testing purposes
 /*void	ft_print_grid(t_grid **grid)
 {
