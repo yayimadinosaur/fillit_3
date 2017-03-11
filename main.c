@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/15 16:50:10 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/10 17:23:47 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/10 21:28:16 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,15 @@
 
 void	ft_print_store(t_store **store, int count);
 t_store	**ft_create_store(char *str, int shape_count);
+
+/*
+ * ft_save stuff
+ */
+
+void	ft_print_save(t_grid ***array);
+t_grid	***ft_save(char *str, int shape_count);
+t_grid	**ft_addpieces(t_grid ***array, char *str, int shape_count);
+t_grid	**ft_add_each(t_grid **array, int pos);
 
 int		main(void)
 {		
@@ -25,8 +34,8 @@ int		main(void)
 			"####\n"	//5
 			"....\n"	//5
 			"....\n"	//5
-			"....\n";	//5
-/*			"\n"		//1			1
+			"....\n"	//5
+			"\n"		//1			1
 			"#...\n"	//5
 			"#...\n"	//5
 			"#...\n"	//5
@@ -35,24 +44,24 @@ int		main(void)
 			"...#\n"
 			".###\n"
 			"....\n"
-			"....\n";	//5
+			"....\n"	//5
 
 			"\n"		//1			2
 			"##..\n"	//5
 			"##..\n"	//5
 			"....\n"	//5
 			"....\n"	//5
-			"\n"		//1			3
+/*			"\n"		//1			3
 			"###.\n"	//5
 			".#..\n"	//5
 			"....\n"	//5
 			"....\n"	//5
-			"\n"		//			4
+	*/		"\n"		//			4
 			"#...\n"	//5
 			"##..\n"	//5
 			"#...\n"	//5
 			"....\n"	//5
-			"\n"		//1			5
+	/*		"\n"		//1			5
 			".#..\n"	//5
 			"##..\n"	//5
 			".#..\n"	//5
@@ -159,8 +168,27 @@ int		main(void)
 			"....\n"
 			"....\n"
 			"....\n"
-			"";		//1			27
+					//1			27
 */
+;
+	if (ft_chk_input(str) == 1)
+	{
+		printf("main: chk_input finished\n-----\n");
+		if (ft_matchx(str) == 1)
+		{
+			ft_print_save(ft_save(str, ft_count_shapes(str)));
+			//	while (ft_fit(ft_fillblank(ft_makegrid(n), n), ft_create_store(str, ft_count_shapes(str)), ft_count_shapes(str)) != 1)
+		}
+		else
+			printf("*****\nfailed match =(\n*****\n");
+	}
+	else
+	{
+		printf("*****\nmain: fail chk_input\n*****\n");
+	}
+	printf("total strlen is %zu\n", ft_strlen(str));
+	return (0);
+}
 
 /*
  * TESTING FT_SAVE
