@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/05 17:32:00 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/07 18:18:45 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/11 16:58:08 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		ft_chk_block(char *str)
 	j = 0;
 	k = 0;
 	m = 0;
-	while (*str++)
+	while (*str)
 	{
 		if (*str == '#')
 			j++;
@@ -37,55 +37,22 @@ int		ft_chk_block(char *str)
 			k = 0;
 		}
 		m++;
+		str++;
 	}
-	printf("chk_block passed!\n");
 	return (1);
 }
 
-int		ft_chk_count(char *str, int i, int j, int k) // all, #, \n
+int		ft_chk_count(char *str)
 {
 	if (ft_strlen(str) < 20 || ft_strlen(str) > 545) //chk min + max char count
-	{
-//		printf("i count = %i\n", i);
 		return (0);
-	}
-	if (i == 20)
-	{
-		if (j / 4 != 1 || k / 4 != 1)
-		{
-//			printf("missing stuff i = %i j = %i k = %i\n", i, j, k);
-			return (0);
-		}
-	}
-	if (i > 20)
-	{
-//		printf("[i > 20] i = %i\n# of shapes = %i + 1\n", i, (i - 20) / 21);
-//		printf("j = %i k = %i\n", j, k);
-		if ((j - 4) / 4 != (i - 20) / 21 && (j - 4) / 4 != (i - 20) % 21)
-		{
-//			printf("j count off\n");
-			return (0);
-		}
-		if ((k - 4) / 5 != (i - 20) / 21 && (k - 4) / 5 != (i - 20) % 21)
-		{
-//			printf("k count off\n");
-			return (0);
-		}
-		if ((i - 20) % 21 != 0)
-		{
-//			printf("not enough input count\n");
-			return (0);
-		}
-		if (ft_chk_block(str + 20) != 1)
-		{
-//			printf("chk_block failed!\n");
-			return (0);
-		}
-	}
+	if (ft_chk_block(str) != 1)
+		return (0);
 	printf("chk_count passed\n");
 	return (1);
 }
 
+/*
 int		ft_chk_char(char *str)
 {
 	int		i;
@@ -136,3 +103,5 @@ int		ft_chk_input(char *str)
 	printf("-----\nend of chk_input\n----\n");
 	return (1);
 }
+
+*/
