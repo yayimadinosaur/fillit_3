@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/05 18:13:55 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/10 16:48:43 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/11 17:11:22 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ t_grid	**ft_makegrid(int n)
 	return (head);
 }
 //left print here for testing purposes
-/*void	ft_print_grid(t_grid **grid)
+void	ft_print_grid(t_grid **grid)
 {
 	int		i;
 	int		j;
@@ -87,6 +87,7 @@ t_grid	**ft_makegrid(int n)
 	return ;
 }
 
+/*
  MAIN IS LEFT FOR TESTING PURPOSES
 
 int		main(void)
