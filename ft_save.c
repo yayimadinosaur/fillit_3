@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/10 16:34:12 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/10 21:21:51 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/11 15:15:32 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ t_grid		**ft_add_each(t_grid **array, int pos)
 	return (array);
 }
 */
+
 void	ft_addpieces(t_grid **array, char *str_start)
 {
 	int		i;		//# counter

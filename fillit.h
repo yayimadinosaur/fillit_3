@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 18:34:45 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/09 19:24:09 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/11 16:23:59 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ typedef	struct		s_store			//struct for stored array for shape parsing
 	int				x3;
 	int				y3;*/
 }					t_store;
+
+typedef struct		s_save			//testing new struct with *ptr piece that saves x + y of coor
+{
+	int				placed;			//1 = yes 0 = no
+	int				***piece;
+}					t_save;
 
 void		ft_putstr(char *str);	//for printing grid within norm
 void		ft_putchar(char c);
