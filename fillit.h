@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 18:34:45 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/11 17:40:51 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/13 19:04:45 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int			ft_matchx(char *str);
 
 int			ft_chk_input(char *str);
 int			ft_chk_char(char *str);
-int			ft_chk_count(char *str);
+int			ft_chk_count(char *str, int i, int j, int k);
 
 char		*ft_shape_letter(char *str, int n);
 
@@ -87,6 +87,10 @@ int		ft_fit1(t_grid **grid, t_store **store, int grid_range);
 //old	int			ft_chk_pts(t_grid **grid, t_store **store, int grid_range, int k);
 //old	void		ft_place(t_grid **grid, t_store **store, int grid_range, int k);
 
+int		ft_chk_input1(char *str);
+int		ft_chk_char1(char *str);
+int		ft_chk_count1(char *str, int i, int j, int k);
+int		ft_chk_block1(char *str);
 #endif
 
 //CANNOT USE NULL

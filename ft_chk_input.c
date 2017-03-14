@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/05 17:32:00 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/11 17:59:56 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/13 19:54:02 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,51 +14,66 @@
 
 int		ft_chk_block(char *str)
 {
-	int		j;		//counter for #
-	int		k;		//counter for \n
-	int		m;		//counter for each block (21)
-	int		test;
+	int		i;		//counter for #
+	int		j;		//counter for \n
+	int		k;		//counter for each block (21)
+
+	i = 0;
 	j = 0;
 	k = 0;
-	m = 0;
-	test = 0;
-	while (*str)
+	while (str[i] != '\0')
 	{
-		if (*str == '#')
-			j++;
-		if (*str == '\n')
-			k++;
-		if (m == 21)
+		printf("%c", str[i]);
+		if (i > 20 && i % 21 == 0)
 		{
 			if (j == 4 && k == 5)
-				m = 0;
+			{
+				j = 0;
+				k = 0;
+			}
 			else
 			{
-				printf("something wrong in block char#[%i] #[%i] \\n[%i]\n", test, j, k);
+				printf("i == [%i] j == [%i] k == [%i]\n", i, j, k);
 				return (0);
 			}
-			j = 0;
-			k = 0;
 		}
-		m++;
-		str++;
-		test++;
+		if (str[i] == '#')
+			j++;
+		else if (str[i] == '\n')
+			k++;
+		i++;
+	}
+	if ((i + 1) % 21 != 0)
+	{
+		printf("i = [%i] [%c]\n", i, str[i]);
+		return (0);
 	}
 	return (1);
 }
 
-int		ft_chk_count(char *str)
+int		ft_chk_count(char *str, int i, int j, int k)	//i = # j = \n k = .
 {
+	int		x;
+
+	x = ft_count_shapes(str);
 	if (ft_strlen(str) < 20 || ft_strlen(str) > 545) //chk min + max char count
 	{
-		printf("strlen is off\n");
+		printf("strlen is off; total strlen = [%zu]\n", ft_strlen(str));
 		return (0);
 	}
-	if (ft_chk_block(str) != 1)
+	printf("strlen = %i shape count = %i\n", (int)ft_strlen(str), x);
+	if (x != ft_strlen(str) / 21)
 	{
-		printf("chk_block failed\n");
+		printf("shape count [%i] doesn't match strlen / 21 [%i]\n", x, (int)ft_strlen(str));
 		return (0);
 	}
+	if (i != 4 * x && j != 5 * x && i + j + k != (int)ft_strlen(str))
+	{
+		printf("chk_count F # = [%i] \n = [%i] . = [%i] shapes = [%i]\n", i, j, k, ft_count_shapes(str));
+		return (0);
+	}
+	printf("TEST %ii %i\n", x, (int)ft_strlen(str) / 21);
+	printf("chk_count values shapes = [%i] # = [%i] \\n = [%i] . = [%i]\n", x, i, j, k);
 	printf("chk_count passed\n");
 	return (1);
 }
@@ -69,23 +84,28 @@ int		ft_chk_char(char *str)
 	int		i;
 	int		j;
 	int		k;
+	char	*head;
 
 	i = 0;
 	j = 0;
 	k = 0;
-	if (str[i] == '\0')
+	head = str;
+	if (str == '\0')
 		return (0);
-	while (str[i] != '\0')
+	while (*str)
 	{
-		if (str[i] == '#' || str[i] == '\n' || str[i] == '.')
+		if (*str == '#')
 			i++;
-		else if (str[i] != '#' && str[i] != '\n' && str[i] != '.')
-		{
-			printf("chk_char wrong char passed\n");
+		if (*str == '\n')
+			j++;
+		if (*str == '.')
+			k++;
+		if (*str != '#' && *str != '\n' && *str != '.')
 			return (0);
-		}
+		str++;
 	}
-	if (ft_chk_count(str) != 1)
+	printf("chk_char finished str\n");
+	if (ft_chk_count(head, i, j, k) != 1)
 		return (0);
 	return (1);
 }
@@ -100,13 +120,10 @@ int		ft_chk_input(char *str)
 		printf("-----\nchk_input chk_char failed\n----");
 		return (0);
 	}
-	printf("-----\nchk_input chk_char passed\n");
-	while (str[i] != '\0')
+	if (ft_chk_block(str) != 1)
 	{
-		if (str[i] == '.' || str[i] == '#' || str[i] == '\n')
-			i++;
-		else
-			return (0);
+		printf("chk_block failed\n");
+		return (0);
 	}
 	printf("-----\nend of chk_input\n----\n");
 	return (1);

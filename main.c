@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/15 16:50:10 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/11 17:57:54 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/13 18:35:03 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,30 @@ int		main(int ac, char **av)
 	char	*str;
 	int		n;
 	if (ac != 2)
+	{
+		printf("arg count = [%i] (if != [2]; fail)\n", ac);
 		return (0);
+	}
 	str = (char *)malloc(sizeof(char) * (500));
 	n = 2;
 	fd = open(av[1], O_RDONLY);
-	while ((read(fd, str, 21) >= 20))
+	while (read(fd, str, 500))
 	{
-	printf("%s\n", str);
-	if (ft_chk_input(str) == 1)
-	{
-		printf("chk_input COMPLETE!\n");
+		printf("main str =\n%s\n", str);
+		if (ft_chk_input1(str) == 1)
+		{
+			printf("chk_input COMPLETE!\n");
+		}
+		else
+			printf("fail chk_input\n");
 	}
-	else
-		printf("fail chk_input\n");
-	}
+	return (0);
 }
+
+
+
+
+
 /*
 	if (ft_chk_input(str) == 1)
 	{
@@ -84,26 +93,4 @@ int		main(int ac, char **av)
 
 
 
-/* sample.fillit from fillit pdf
 
-...#$	5
-...#$	5
-...#$	5
-...#$	5
-$		1
-....$	5
-....$	5
-....$	5
-####$	5
-$		1
-.###$	5
-...#$	5
-....$	5
-....$	5
-$		1
-....$	5
-..##$	5
-.##.$	5
-....$	5
-$>		1
-*/
