@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/15 16:50:10 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/13 18:35:03 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/14 17:58:51 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@ int		main(int ac, char **av)
 		if (ft_chk_input1(str) == 1)
 		{
 			printf("chk_input COMPLETE!\n");
+			if (ft_matchx(str) == 1)
+			{
+				printf("matchx passed\n");
+				ft_print_save2(ft_save2(str, ft_count_shapes(str)));
+			}
+			else
+				printf("shape_chk fail\n");
 		}
 		else
 			printf("fail chk_input\n");

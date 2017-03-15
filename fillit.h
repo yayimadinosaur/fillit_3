@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 18:34:45 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/13 19:04:45 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/14 18:00:31 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,15 @@ typedef	struct		s_store			//struct for stored array for shape parsing
 typedef struct		s_save			//testing new struct with *ptr piece that saves x + y of coor
 {
 	int				placed;			//1 = yes 0 = no
-	int				***piece;
+	int				**piece;
 }					t_save;
+
+typedef	struct		s_save1
+{
+	int				placed;
+	int				x;
+	int				y;
+}					t_save1;
 
 void		ft_putstr(char *str);	//for printing grid within norm
 void		ft_putchar(char c);
@@ -87,10 +94,19 @@ int		ft_fit1(t_grid **grid, t_store **store, int grid_range);
 //old	int			ft_chk_pts(t_grid **grid, t_store **store, int grid_range, int k);
 //old	void		ft_place(t_grid **grid, t_store **store, int grid_range, int k);
 
+
 int		ft_chk_input1(char *str);
 int		ft_chk_char1(char *str);
 int		ft_chk_count1(char *str, int i, int j, int k);
 int		ft_chk_block1(char *str);
+
+t_save	**ft_save1(char *str, int shape_count);
+void	ft_addpieces1(t_save *array, char *str_start);
+void	ft_print_save1(t_save **array);
+
+t_save	**ft_save2(char *str, int shape_count);
+void	ft_addpieces2(t_save *array, int shape_num, char *str_start);
+void	ft_print_save2(t_save **array);
 #endif
 
 //CANNOT USE NULL
