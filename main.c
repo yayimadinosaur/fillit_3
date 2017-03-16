@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/15 16:50:10 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/14 17:58:51 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/15 18:26:50 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int		main(int ac, char **av)
 	int		fd;
 	char	*str;
 	int		n;
+
+	
 	if (ac != 2)
 	{
 		printf("arg count = [%i] (if != [2]; fail)\n", ac);
@@ -27,7 +29,7 @@ int		main(int ac, char **av)
 	fd = open(av[1], O_RDONLY);
 	while (read(fd, str, 500))
 	{
-		printf("main str =\n%s\n", str);
+/*		printf("main str =\n%s\n", str);
 		if (ft_chk_input1(str) == 1)
 		{
 			printf("chk_input COMPLETE!\n");
@@ -44,12 +46,11 @@ int		main(int ac, char **av)
 	}
 	return (0);
 }
+*/
 
 
 
 
-
-/*
 	if (ft_chk_input(str) == 1)
 	{
 		printf("main: chk_input finished\n-----\n");
@@ -95,9 +96,4 @@ int		main(int ac, char **av)
 	printf("total strlen is %zu\n", ft_strlen(str));
 	return (0);
 }
-
-*/
-
-
-
-
+}

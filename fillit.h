@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 18:34:45 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/15 17:38:37 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/15 19:43:57 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,17 @@ typedef struct		s_grid			//struct for grid
 //	struct s_list	*next;
 }					t_grid;
 
+typedef struct		s_container
+{
+	int				x;
+	int				y;
+}					t_container;
+
 typedef	struct		s_store			//struct for stored array for shape parsing
 {
 	int				shape;
 	char			marked;
-	int				*stored;
+	t_container		**stored;
 /*	int				x0;				//use struct in case stored is **ptr;
 	int				y0;
 	int				x1;
@@ -49,9 +55,18 @@ typedef struct		s_save			//testing new struct with *ptr piece that saves x + y o
 typedef	struct		s_save1
 {
 	int				placed;
+	struct	s_container	*container;
+///	int				x;
+//	int				y;
+}					t_save1;
+
+/* moved struct above to test in ft_store.c
+typedef struct		s_container
+{
 	int				x;
 	int				y;
-}					t_save1;
+}					t_container;
+*/
 
 void		ft_putstr(char *str);	//for printing grid within norm
 void		ft_putchar(char c);
