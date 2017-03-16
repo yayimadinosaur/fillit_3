@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/11 15:15:52 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/14 18:03:58 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/15 17:41:14 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 //uses t_save1 struct (testing out new struct values to avoid array within struct
 //
-void	ft_addpieces2(t_save *array, int shape_num, char *str_start)
+void	ft_addpieces2(t_save1 **array, int shape_num, char *str_start)
 {
 	int		i;		//# counter
 	int		j;		//iterator counter
@@ -41,23 +41,23 @@ void	ft_addpieces2(t_save *array, int shape_num, char *str_start)
 	return ;
 }
 
-t_save		**ft_save2(char *str, int shape_count)
+t_save1		**ft_save2(char *str, int shape_count)
 {
 	int		i;
 	int		k;
 	t_save1	**save1;
 
-	i = -1;
-	k = -1;
+	i = 0;
+	k = 0;
 	if (!(save1 = (t_save1**)malloc(sizeof(t_save1*) * (shape_count + 1))))
 		return (0);
 	save1[shape_count + 1] = 0;
-	while (save1[i] != 0)
+	while (i < shape_count)
 	{
 		if (!(save1[i] = (t_save1*)malloc(sizeof(t_save1) * (5))))
 			return (0);
 		save1[i][4] = 0;
-		ft_addpieces1(save1[i], i, (str + (21 * i)));
+		ft_addpieces2(save1[i], i, str + (21 * i));
 		i++;
 	}
 	return (save1);
@@ -68,7 +68,7 @@ t_save		**ft_save2(char *str, int shape_count)
  */
 
 
-void	ft_print_save2(t_save **array)
+void	ft_print_save2(t_save1 **array)
 {
 	int		i;
 	int		j;
