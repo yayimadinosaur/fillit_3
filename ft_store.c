@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/05 16:00:49 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/16 19:08:49 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/16 19:15:06 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ void		ft_print_store(t_store **store, int count)
 	return ;
 }
 
-
+/*
 int		main(void)
 {
 	int		x;
@@ -211,4 +211,4 @@ int		main(void)
 	printf("fin\n");
 	return (0);
 }
-
+*/

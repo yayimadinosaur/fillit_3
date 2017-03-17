@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 18:34:45 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/16 17:58:39 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/16 19:14:03 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,10 @@ void	ft_print_save1(t_save **array);
 t_save1	**ft_save2(char *str, int shape_count);
 void	ft_addpieces2(t_container **array, char *str_start);
 void	ft_print_save2(t_save1 **array);
+
+void	ft_print_store(t_store **store, int count);
+t_store	**ft_create_store(char *str, int shape_count);
+t_container	**ft_store_parts(t_container **stored, char *str);
 #endif
 
 //CANNOT USE NULL
