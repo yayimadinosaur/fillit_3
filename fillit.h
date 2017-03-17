@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 18:34:45 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/15 19:43:57 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/16 17:58:39 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct		s_save			//testing new struct with *ptr piece that saves x + y o
 typedef	struct		s_save1
 {
 	int				placed;
-	struct	s_container	*container;
+	struct	s_container	**container;
 ///	int				x;
 //	int				y;
 }					t_save1;
@@ -120,7 +120,7 @@ void	ft_addpieces1(t_save *array, char *str_start);
 void	ft_print_save1(t_save **array);
 
 t_save1	**ft_save2(char *str, int shape_count);
-void	ft_addpieces2(t_save1 **array, int shape_num, char *str_start);
+void	ft_addpieces2(t_container **array, char *str_start);
 void	ft_print_save2(t_save1 **array);
 #endif
 
