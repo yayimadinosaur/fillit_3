@@ -6,18 +6,21 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 15:49:47 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/10 21:37:45 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/16 21:31:16 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
+/* LEAVING OUT, NEED TO WRITE IF USING (CURRENTLY NOT)
 int		ft_remove();
 
 int		ft_place2(t_store **store, );				//places piece
 
+*/
+
 //PROBLEM PROBLEM PROBLEM PROBLEM
-int		ft_chk_index(t_grid *grid[i], int j, t_store **store, t_store s_index)	//checks the entire shape
+int		ft_chk_index(t_grid **grid, int j, t_store **store, t_store s_index)	//checks the entire shape
 {
 	int		x;		//store[s_index]->stored[x]
 	int		y;		//decrement counter for each index

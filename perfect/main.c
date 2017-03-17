@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/15 16:50:10 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/16 20:17:26 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/16 21:43:37 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		main(int ac, char **av)
 					buff = ft_makegrid(n);
 					ft_fillblank(buff, n);
 					ft_print_grid(buff);
-					if (ft_fit2(buff, hey) == 0)
+					if (ft_grid_iter(buff, hey) == 1)
 					{
 						printf("fit2 failed on [%i x %i] grid\n", n, n);
 						n++;

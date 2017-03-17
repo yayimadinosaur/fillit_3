@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 18:34:45 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/16 20:20:32 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/16 21:43:35 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,18 @@ int		ft_scan_grid1(t_grid **grid, int stored_index, int grid_range, int z);
 int		ft_fit1(t_grid **grid, t_store **store, int grid_range);
 */
 
+/*	NOT USING FOR NOW
 int		ft_fit2(t_grid **grid, t_store **store);
 int		ft_chk_pts2(t_grid **grid, int i, int j, t_store **store);
 int		ft_chk_mark(t_store **store);
 int		ft_chk_index(t_grid **grid, int j, t_store **store, t_store s_index);
 int		ft_place2(t_store **store, );
 int		ft_remove();
+*/
+
+int		ft_grid_iter(t_grid **grid, t_store **store);
+int		ft_chk_pts3(t_grid **grid, int i, int j, t_store **store);
+void	ft_place3(t_grid **grid, int i, int j, t_store **store);
 
 #endif
 
