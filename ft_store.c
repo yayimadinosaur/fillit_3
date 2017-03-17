@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/05 16:00:49 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/16 17:58:37 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/16 19:08:49 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,9 +132,11 @@ void		ft_print_store(t_store **store, int count)
 {
 	int		i;
 	int		j;
+	int		count_str; //str
 
 	i = 0;
 	j = 0;
+	count_str = 0;
 	printf("start print\n");
 	while (i < count)
 	{
@@ -144,6 +146,8 @@ void		ft_print_store(t_store **store, int count)
 			printf("shape [%i], hash# [%i], value [%i]\n", i, j, store[i]->stored[j]->x);
 			printf("shape [%i], hash# [%i], value [%i]\n", i, j, store[i]->stored[j]->y);
 			j++;
+	//		printf("[%i]\n", count_str);
+			count_str++;
 		}
 		printf("shape [%i] marked [%c]\n", i, store[i]->marked);
 		j = 0;
@@ -165,7 +169,7 @@ int		main(void)
 					"....\n"
 					"....\n"
 					"\n"
-					"#...\n"
+					".#..\n"
 					"###.\n"
 					"....\n"
 					"....\n"
@@ -173,15 +177,38 @@ int		main(void)
 					"##..\n"
 					".#..\n"
 					".#..\n"
+					"....\n"
 					"\n"
-					"####\n"
+					"..#.\n"
+					"..#.\n"
+					"..##\n"
+					"....\n"
+					"\n"
+					"#...\n"
+					"#...\n"
+					"#...\n"
+					"#...\n"
+					"\n"
+					"##..\n"
+					".##.\n"
 					"....\n"
 					"....\n"
-					"....\n";
+					"\n"
+					"..#.\n"
+					"..#.\n"
+					".##.\n"
+					"....\n"
+					"\n"
+					".##.\n"
+					".##.\n"
+					"....\n"
+					"....\n"
+					;
 	x = ft_count_shapes(str);
 	printf("%s\n", str);
 	printf("total shapes = %i\n", x);
 	ft_print_store(ft_create_store(str, x), x);
+	printf("fin\n");
 	return (0);
 }
 
