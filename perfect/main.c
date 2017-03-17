@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/15 16:50:10 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/16 21:43:37 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/17 16:37:14 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,27 @@ int		main(int ac, char **av)
 				printf("matchx passed\n");
 				hey = ft_create_store(str, x);
 				ft_print_store(hey, x);
-				while (n < 5)
+				while (n < 6)
 				{
+					printf("main passing n = [%i]\n", n);
 					buff = ft_makegrid(n);
 					ft_fillblank(buff, n);
 					ft_print_grid(buff);
+					printf("main finished print_grid\n");
 					if (ft_grid_iter(buff, hey) == 1)
 					{
-						printf("fit2 failed on [%i x %i] grid\n", n, n);
-						n++;
+						ft_print_grid(buff);
+						free(buff);
+						free(hey);
+						printf("fit3 success! via [%i x %i] grid\n", n, n);
+						return (0);
 					}
 					else
 					{
-						printf("fit2 all shapes fit!\n");
 						ft_print_grid(buff);
+						free(buff);
+						printf("grid too small, freed grid size of [%i]\n", n);
+						n++;
 					}
 				}
 			}
