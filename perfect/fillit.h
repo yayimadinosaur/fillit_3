@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 18:34:45 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/16 19:17:06 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/16 20:20:32 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,59 +19,35 @@
 
 # include <stdio.h>					//remove later, for printf
 
-typedef struct		s_grid			//struct for grid
+typedef struct			s_grid			//struct for grid
 {
-	char			content;
-//	struct s_list	*next;
-}					t_grid;
+	char				content;
+}						t_grid;
 
-typedef struct		s_container
+typedef struct			s_container
 {
-	int				x;
-	int				y;
-}					t_container;
+	int					x;
+	int					y;
+}						t_container;
 
-typedef	struct		s_store			//struct for stored array for shape parsing
+typedef	struct			s_store			//struct for stored array for shape parsing
 {
-	int				shape;
-	char			marked;
-	t_container		**stored;
-/*	int				x0;				//use struct in case stored is **ptr;
-	int				y0;
-	int				x1;
-	int				y1;
-	int				x2;
-	int				x2;
-	int				x3;
-	int				y3;*/
-}					t_store;
+	int					shape;
+	char				marked;
+	t_container			**stored;
+}						t_store;
 
-typedef struct		s_save			//testing new struct with *ptr piece that saves x + y of coor
+typedef	struct			s_save1
 {
-	int				placed;			//1 = yes 0 = no
-	int				**piece;
-}					t_save;
-
-typedef	struct		s_save1
-{
-	int				placed;
+	int					placed;
 	struct	s_container	**container;
-///	int				x;
-//	int				y;
-}					t_save1;
 
-/* moved struct above to test in ft_store.c
-typedef struct		s_container
-{
-	int				x;
-	int				y;
-}					t_container;
-*/
+}					t_save1;
 
 void		ft_putstr(char *str);	//for printing grid within norm
 void		ft_putchar(char c);
 
-int			ft_match1(char *str);
+int			ft_match1(char *str);	//??? what is this for
 
 int			ft_shape1(char *start);
 int			ft_shape2(char *start);
@@ -86,7 +62,7 @@ int			ft_chk_input(char *str);
 int			ft_chk_char(char *str);
 int			ft_chk_count(char *str, int i, int j, int k);
 
-char		*ft_shape_letter(char *str, int n);
+//char		*ft_shape_letter(char *str, int n);
 
 int			ft_count_shapes(char *str);
 
@@ -94,39 +70,37 @@ t_grid		**ft_makegrid(int n);
 void		ft_fillblank(t_grid **grid, int n);		//notsure if needed in header (STATIC?)
 void		ft_print_grid(t_grid **grid);
 
+/*		NOT SURE IF NEEDED / USED?
 int			ft_fit1(t_grid **grid, t_store **store, int grid_range);
 int			ft_scan_grid1(t_grid **grid, int stored_index, int grid_range, int z);
 void		ft_place1(t_grid **grid, t_store **store, int k, int grid_range);
-
+*/
 void		ft_print_save(t_grid ***array);
 t_grid		***ft_save(char *str, int shape_count);
 void		ft_addpieces(t_grid **array, char *str_start);
-
-void	ft_place1(t_grid **grid, t_store **store, int k, int grid_range);
-int		ft_scan_grid1(t_grid **grid, int stored_index, int grid_range, int z);
-int		ft_fit1(t_grid **grid, t_store **store, int grid_range);
-//old	int			ft_fit(t_grid **grid, t_store **store, int grid_range);
-//old	int			ft_chk_pts(t_grid **grid, t_store **store, int grid_range, int k);
-//old	void		ft_place(t_grid **grid, t_store **store, int grid_range, int k);
-
 
 int		ft_chk_input1(char *str);
 int		ft_chk_char1(char *str);
 int		ft_chk_count1(char *str, int i, int j, int k);
 int		ft_chk_block1(char *str);
 
-/*		OLD FUNCTIONS - TESTING WAYS TO STORE SHAPES
-t_save	**ft_save1(char *str, int shape_count);
-void	ft_addpieces1(t_save *array, char *str_start);
-void	ft_print_save1(t_save **array);
-
-t_save1	**ft_save2(char *str, int shape_count);
-void	ft_addpieces2(t_container **array, char *str_start);
-void	ft_print_save2(t_save1 **array);
-*/
 void	ft_print_store(t_store **store, int count);
 t_store	**ft_create_store(char *str, int shape_count);
 t_container	**ft_store_parts(t_container **stored, char *str);
+
+/* OLD PLACE?
+void	ft_place1(t_grid **grid, t_store **store, int k, int grid_range);
+int		ft_scan_grid1(t_grid **grid, int stored_index, int grid_range, int z);
+int		ft_fit1(t_grid **grid, t_store **store, int grid_range);
+*/
+
+int		ft_fit2(t_grid **grid, t_store **store);
+int		ft_chk_pts2(t_grid **grid, int i, int j, t_store **store);
+int		ft_chk_mark(t_store **store);
+int		ft_chk_index(t_grid **grid, int j, t_store **store, t_store s_index);
+int		ft_place2(t_store **store, );
+int		ft_remove();
+
 #endif
 
-//CANNOT USE NULL
+//NOTE : CANNOT USE NULL
