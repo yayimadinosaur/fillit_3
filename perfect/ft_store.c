@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/05 16:00:49 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/16 21:42:58 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/17 21:16:26 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_container		**ft_store_parts(t_container **stored, char *str)
 				k = j;
 			if (!(stored[i] = (t_container*)malloc(sizeof(t_container) * (1))))
 				return (0);
+			printf("store_parts i [%i] j [%i] k [%i] j mod 5 - k mod 5 [%i] j / 5 - k / 5 [%i]\n", i, j, k, (j % 5) - (k % 5), (j / 5) + (k / 5));
 			stored[i]->x = (j % 5) - (k % 5);
 			stored[i]->y = (j / 5) + (k / 5);
 			i++;

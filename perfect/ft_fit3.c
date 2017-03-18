@@ -6,33 +6,34 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 20:44:27 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/17 16:44:19 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/17 21:16:23 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		ft_chk_range(t_grid **grid, t_store **store)
+//function for removing pieces
+//void	ft_remove();
+
+int		ft_chk_range(int i, int j, t_store **store, int range)
 {
 	int		a;		//store iter
-	int		k;
+	int		k;		//per piece
 
 	a = 0;
 	k = 0;
 	printf("start chk_range\n");
 	while (store[a]->marked != 'N')
 		a++;
-	printf("chk_pts shape choice = [%i]\n", a);
-	ft_chk_range(grid, store);
 	while (store[a]->stored[k] != 0)
 	{
-		printf("chk_range CHECKING [%i]\n", k);
-		if (grid[i + store[a]->stored[k]->x][j + store[a]->stored[k]->y].content == '.')
-			k++;
-		else
+		if (i + store[a]->stored[k]->x > range)
 			return (0);
+		if (j + store[a]->stored[k]->y > range)
+			return (0);
+		k++;
 	}
-	printf("chk_range finished shape\n");
+	printf("chk_range all fit within current grid\n");
 	return (1);
 }
 
@@ -51,10 +52,11 @@ int		ft_checkstore(t_store **store)
 	return (1);
 }
 
+//REMEMBER HOW YOU BUILT THE FUCKEN GRID - Y POINTER THEN X INDEX
 void	ft_place3(t_grid **grid, int i, int j, t_store **store)
 {
 	int		a;		//store iter
-	int		k;
+	int		k;		//per piece
 
 	i = 0;
 	a = 0;
@@ -64,9 +66,15 @@ void	ft_place3(t_grid **grid, int i, int j, t_store **store)
 		a++;
 	while (k < 4)
 	{
-		grid[i + store[a]->stored[k]->x][j + store[a]->stored[k]->y].content = a + 65;
+		printf("shape = [%i] piece = [%i]\n", a, k);
+		printf("i [%i] j [%i] x [%i] y [%i]\n", i, j, store[a]->stored[k]->x,
+				store[a]->stored[k]->y);
+		printf("result = i + x [%i] j + x [%i]\n", i + store[a]->stored[k]->x, j + store[a]->stored[k]->y);
+		grid[i + store[a]->stored[k]->y][j + store[a]->stored[k]->x].content = a + 65;
 		k++;
 	}
+	printf("place3 TESTING RESULT OF GRID!!!!!!\n");
+	ft_print_grid(grid);
 	store[a]->marked = 'Y';
 	printf("store[%i]->marked = 'Y'\n", a);
 	return ;
@@ -83,10 +91,9 @@ int		ft_chk_pts3(t_grid **grid, int i, int j, t_store **store)
 	while (store[a]->marked != 'N')
 		a++;
 	printf("chk_pts shape choice = [%i]\n", a);
-	ft_chk_range(grid, store);
 	while (store[a]->stored[k] != 0)
 	{
-		printf("chk_pts3 CHECKING [%i]\n", k);
+		printf("chk_pts3 CHECKING shape [%i] piece [%i][%i][%i] grid x[%i]y[%i]\n", a, k, store[a]->stored[k]->x, store[a]->stored[k]->y, i, j);
 		if (grid[i + store[a]->stored[k]->x][j + store[a]->stored[k]->y].content == '.')
 			k++;
 		else
@@ -96,7 +103,7 @@ int		ft_chk_pts3(t_grid **grid, int i, int j, t_store **store)
 	return (1);
 }
 
-int		ft_grid_iter(t_grid **grid, t_store **store)
+int		ft_grid_iter(t_grid **grid, t_store **store, int range)
 {
 	int		i;
 	int		j;
@@ -107,16 +114,21 @@ int		ft_grid_iter(t_grid **grid, t_store **store)
 	{
 		while (grid[i][j].content != 0)
 		{
+			if (ft_checkstore(store) == 1)
+			{
+				printf("all pieces placed - please check solution\n");
+				return (1);
+			}
 			printf("grid_iter [%i][%i][%c]\n", i, j, grid[i][j].content);
 			if (grid[i][j].content == '.')
-			{
-				if (ft_chk_pts3(grid, i, j, store) == 1)
+			{	
+				if (ft_chk_range(i, j, store, range) == 1)
 				{
-					ft_place3(grid, i, j, store);
-					if (ft_checkstore(store) == 1)
+					if (ft_chk_pts3(grid, i, j, store) == 1)
 					{
-						printf("all pieces placed - please check solution\n");
-						return (1);
+						ft_place3(grid, i, j, store);
+						printf("			grid_iter PLACED!		\n");
+						ft_print_grid(grid);
 					}
 				}
 			}

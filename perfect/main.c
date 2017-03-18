@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/15 16:50:10 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/17 16:37:14 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/17 20:42:01 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ int		main(int ac, char **av)
 				ft_print_store(hey, x);
 				while (n < 6)
 				{
-					printf("main passing n = [%i]\n", n);
+					printf("			main passing n = [%i]		\n", n);
 					buff = ft_makegrid(n);
 					ft_fillblank(buff, n);
 					ft_print_grid(buff);
 					printf("main finished print_grid\n");
-					if (ft_grid_iter(buff, hey) == 1)
+					if (ft_grid_iter(buff, hey, n) == 1)
 					{
 						ft_print_grid(buff);
 						free(buff);
