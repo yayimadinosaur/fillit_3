@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/15 16:50:10 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/17 20:42:01 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/17 22:03:25 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		main(int ac, char **av)
 		return (0);
 	}
 	str = (char *)malloc(sizeof(char) * (500));
-	n = 2;
+	n = 4;
 	fd = open(av[1], O_RDONLY);
 	while (read(fd, str, 500))
 	{
@@ -41,7 +41,7 @@ int		main(int ac, char **av)
 				printf("matchx passed\n");
 				hey = ft_create_store(str, x);
 				ft_print_store(hey, x);
-				while (n < 6)
+				while (n < 11)
 				{
 					printf("			main passing n = [%i]		\n", n);
 					buff = ft_makegrid(n);
