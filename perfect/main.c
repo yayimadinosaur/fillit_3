@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/15 16:50:10 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/18 17:23:58 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/18 20:45:10 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		main(int ac, char **av)
 		return (0);
 	}
 	str = (char *)malloc(sizeof(char) * (500));
-	n = 4;
+	n = 6;
 	fd = open(av[1], O_RDONLY);
 	while (read(fd, str, 500))
 	{
@@ -45,7 +45,7 @@ int		main(int ac, char **av)
 				{
 					printf("			main passing n = [%i]		\n", n);
 					buff = ft_makegrid(n);
-					ft_fillblank(buff, n);
+				//	ft_fillblank(buff, n);		redundent
 					ft_print_grid(buff);
 					printf("main finished print_grid\n");
 					if (ft_grid_iter(buff, hey, n) == 1)	//ft_fit3
