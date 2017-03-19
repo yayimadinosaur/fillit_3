@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/15 16:50:10 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/18 17:02:23 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/18 17:14:59 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		main(int ac, char **av)
 		return (0);
 	}
 	str = (char *)malloc(sizeof(char) * (500));
-	n = 2;
+	n = 4;
 	fd = open(av[1], O_RDONLY);
 	while (read(fd, str, 500))
 	{
