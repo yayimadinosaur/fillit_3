@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 20:44:27 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/17 21:16:23 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/18 18:34:20 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int		ft_chk_range(int i, int j, t_store **store, int range)
 {
 	int		a;		//store iter
 	int		k;		//per piece
+	int		buff_x;
+	int		buff_y;
 
 	a = 0;
 	k = 0;
@@ -27,13 +29,31 @@ int		ft_chk_range(int i, int j, t_store **store, int range)
 		a++;
 	while (store[a]->stored[k] != 0)
 	{
-		if (i + store[a]->stored[k]->x > range)
+		buff_x = i + store[a]->stored[k]->x;
+		buff_y = j + store[a]->stored[k]->y;
+		if (buff_x > range)
+		{
+			printf("out of range x big\n");
 			return (0);
-		if (j + store[a]->stored[k]->y > range)
+		}
+		if (buff_x < 0)
+		{
+			printf("out of range x neg\n");
 			return (0);
+		}
+		if (buff_y > range || buff_y < 0)
+		{
+			printf("out of range y big\n");
+			return (0);
+		}
+		if (buff_y < 0)
+		{
+			printf("out of range y neg\n");
+			return (0);
+		}
 		k++;
 	}
-	printf("chk_range all fit within current grid\n");
+	printf("chk_range all fit within current grid range\n");
 	return (1);
 }
 
@@ -93,11 +113,14 @@ int		ft_chk_pts3(t_grid **grid, int i, int j, t_store **store)
 	printf("chk_pts shape choice = [%i]\n", a);
 	while (store[a]->stored[k] != 0)
 	{
-		printf("chk_pts3 CHECKING shape [%i] piece [%i][%i][%i] grid x[%i]y[%i]\n", a, k, store[a]->stored[k]->x, store[a]->stored[k]->y, i, j);
+		printf("chk_pts3 CHECKING shape [%i] piece [%i][%i][%i] grid x[%i]y[%i]\n", a, k, store[a]->stored[k]->x, store[a]->stored[k]->y, i + store[a]->stored[k]->x , j + store[a]->stored[k]->y);
 		if (grid[i + store[a]->stored[k]->x][j + store[a]->stored[k]->y].content == '.')
 			k++;
 		else
+		{
+			printf("chk_pts3 shape [%i] piece [%i] will not fit\n", a, k);
 			return (0);
+		}
 	}
 	printf("chk_pts3 finished shape\n");
 	return (1);
@@ -128,7 +151,6 @@ int		ft_grid_iter(t_grid **grid, t_store **store, int range)
 					{
 						ft_place3(grid, i, j, store);
 						printf("			grid_iter PLACED!		\n");
-						ft_print_grid(grid);
 					}
 				}
 			}

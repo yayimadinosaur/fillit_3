@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/15 16:50:10 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/18 17:14:59 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/18 17:23:58 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		main(int ac, char **av)
 					ft_fillblank(buff, n);
 					ft_print_grid(buff);
 					printf("main finished print_grid\n");
-					if (ft_grid_iter(buff, hey, n) == 1)
+					if (ft_grid_iter(buff, hey, n) == 1)	//ft_fit3
 					{
 						ft_print_grid(buff);
 						free(buff);
