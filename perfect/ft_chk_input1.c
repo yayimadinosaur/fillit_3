@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 18:21:52 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/13 20:02:01 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/18 17:06:14 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,11 @@ int		ft_chk_char1(char *str)
 
 int		ft_chk_input1(char *str)
 {
+	if (*str == '\0')
+	{
+		printf("str = NULL\n");
+		return (0);
+	}
 	if (ft_chk_char1(str) != 1)
 	{
 		printf("chk_char1 fail\n");

@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/15 16:50:10 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/17 22:03:25 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/18 17:02:23 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		main(int ac, char **av)
 		return (0);
 	}
 	str = (char *)malloc(sizeof(char) * (500));
-	n = 4;
+	n = 2;
 	fd = open(av[1], O_RDONLY);
 	while (read(fd, str, 500))
 	{
@@ -66,10 +66,16 @@ int		main(int ac, char **av)
 				}
 			}
 			else
+			{
 				printf("shape_chk fail\n");
+				return (0);
+			}
 		}
 		else
+		{
 			printf("fail chk_input\n");
+			return (0);
+		}
 	}
 	return (0);
 }
