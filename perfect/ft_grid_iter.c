@@ -6,14 +6,39 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/18 19:18:33 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/18 20:45:08 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/20 18:19:28 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
 //function for removing pieces
-//void	ft_remove();
+void	ft_remove(t_grid **grid, t_store **store)
+{
+	int		i;
+	int		j;
+	int		k;
+	int		x;
+
+	i = 0;
+	j = 0;
+	k = 0;
+	while (store[k] != 0 && store[k]->marked != 'N')
+		k++
+	k = k - 1;
+	while (grid[i] != 0)
+	{
+		while (grid[i][j].content != 0)
+		{
+			if (grid[i][j].content == store[k] + 65)
+				grid[i][j].content = '.';
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	return ;
+}
 
 int		ft_chk_range(int i, int j, t_store **store, int range)
 {
@@ -159,6 +184,11 @@ int		ft_grid_iter(t_grid **grid, t_store **store, int range)
 		}
 		j = 0;
 		i++;
+	}
+	if (ft_checkstore(store) != 1)	//figure out how to remove piece	
+	{
+		ft_remove(grid, i, j, store);
+		ft_grid_iter(grid, store, range);
 	}
 	printf("			end of grid_iter			\n");
 	return (0);
