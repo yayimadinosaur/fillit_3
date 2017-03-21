@@ -6,14 +6,57 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/18 19:18:33 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/20 21:34:53 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/21 13:08:02 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-//function for removing pieces
-void	ft_remove(t_grid **grid, t_store **store)
+int		ft_checkstore(t_store **store)
+{
+	int		i;
+
+	i = 0;
+	while (store[i] != 0)
+	{
+		if (store[i]->marked == 'Y')
+			i++;
+		else
+			return (0);
+	}
+	return (1);
+}
+
+t_grid	**ft_plus1(t_grid **grid, t_store **store)
+{
+	t_grid	**buff;
+	int		i;
+	int		j;
+	int		k;		//shape of store to look for
+	int		x;
+
+	i = 0;
+	j = 0;
+	k = ft_checkstore(store) - 1;
+	x = 0;
+	while (grid[i] != 0 && x != 1)
+	{
+		while (grid[i][j].content != 0 && x != 1)
+		{
+			if (grid[i][j].content == k + 65)
+			{
+				if (grid[i][j + 1].content == 0 ? buff = grid[i + 1][j] : buff = grid[i][j + 1]);
+				x++;
+			}
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	return (buff);
+}
+
+int		ft_remove(t_grid **grid, t_store **store)
 {
 	int		a;
 	int		x;
@@ -24,7 +67,11 @@ void	ft_remove(t_grid **grid, t_store **store)
 	y = 0;
 	while (store[a] != 0 && store[a]->marked != 'N')
 		a++;
-	a = a - 1;
+	if (a - 1 >= 0)
+		a = a - 1;
+	else
+		return (0);
+	store[a]->marked = 'N';
 	while (grid[x] != 0)
 	{
 		while (grid[x][y].content != 0)
@@ -36,7 +83,7 @@ void	ft_remove(t_grid **grid, t_store **store)
 		x = 0;
 		y++;
 	}
-	return ;
+	return (1);
 }
 
 int		ft_chk_range(int i, int j, t_store **store, int range)
@@ -79,21 +126,6 @@ int		ft_chk_range(int i, int j, t_store **store, int range)
 		k++;
 	}
 	printf("chk_range all fit within current grid range\n");
-	return (1);
-}
-
-int		ft_checkstore(t_store **store)
-{
-	int		i;
-
-	i = 0;
-	while (store[i] != 0)
-	{
-		if (store[i]->marked == 'Y')
-			i++;
-		else
-			return (0);
-	}
 	return (1);
 }
 
@@ -153,10 +185,10 @@ int		ft_grid_iter(t_grid **grid, t_store **store, int range)
 {
 	int		i;
 	int		j;
-	t_grid	**buff;
 
 	i = 0;
 	j = 0;
+	t_grid	**buff;
 	while (grid[i] != 0)
 	{
 		while (grid[i][j].content != 0)
@@ -185,10 +217,12 @@ int		ft_grid_iter(t_grid **grid, t_store **store, int range)
 		j = 0;
 		i++;
 	}
-	if (ft_checkstore(store) != 1)	//figure out how to remove piece	
+	if (ft_checkstore(store) != 1)
 	{
-		ft_remove(grid, store);
-		ft_grid_iter(buff, store, range);
+		buff = ft_plus1(grid, store);
+		if (ft_remove(grid, store) == 0)	//if removal piece is last, grid too small
+			return (0);
+		ft_grid_iter(buff, store, range);	//after removal success, place original spot + 1
 	}
 	printf("			end of grid_iter			\n");
 	return (0);
