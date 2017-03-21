@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/18 19:18:33 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/20 18:19:28 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/20 21:34:53 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,26 @@
 //function for removing pieces
 void	ft_remove(t_grid **grid, t_store **store)
 {
-	int		i;
-	int		j;
-	int		k;
+	int		a;
 	int		x;
+	int		y;
 
-	i = 0;
-	j = 0;
-	k = 0;
-	while (store[k] != 0 && store[k]->marked != 'N')
-		k++
-	k = k - 1;
-	while (grid[i] != 0)
+	a = 0;
+	x = 0;
+	y = 0;
+	while (store[a] != 0 && store[a]->marked != 'N')
+		a++;
+	a = a - 1;
+	while (grid[x] != 0)
 	{
-		while (grid[i][j].content != 0)
+		while (grid[x][y].content != 0)
 		{
-			if (grid[i][j].content == store[k] + 65)
-				grid[i][j].content = '.';
-			j++;
+			if (grid[x][y].content == a + 65)
+				grid[x][y].content = '.';
+			x++;
 		}
-		j = 0;
-		i++;
+		x = 0;
+		y++;
 	}
 	return ;
 }
@@ -154,6 +153,7 @@ int		ft_grid_iter(t_grid **grid, t_store **store, int range)
 {
 	int		i;
 	int		j;
+	t_grid	**buff;
 
 	i = 0;
 	j = 0;
@@ -187,8 +187,8 @@ int		ft_grid_iter(t_grid **grid, t_store **store, int range)
 	}
 	if (ft_checkstore(store) != 1)	//figure out how to remove piece	
 	{
-		ft_remove(grid, i, j, store);
-		ft_grid_iter(grid, store, range);
+		ft_remove(grid, store);
+		ft_grid_iter(buff, store, range);
 	}
 	printf("			end of grid_iter			\n");
 	return (0);
