@@ -6,13 +6,39 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/18 19:18:33 by wfung             #+#    #+#             */
-/*   Updated: 2017/03/21 13:08:02 by wfung            ###   ########.fr       */
+/*   Updated: 2017/03/22 20:49:38 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		ft_checkstore(t_store **store)
+int		ft_mark_no(t_store **)		//finds which isn't marked
+{
+	int		i;
+
+	i = 0;
+	while (store[a] != 0 && store[a]->marked != 'N')
+		a++;
+	if (a - 1 >= 0)
+		a = a - 1;
+	else
+		return (-1);
+	return (a);
+}
+
+int		ft_mark_yes(t_store **)		//finds which isn't marked
+{
+	int		i;
+
+	i = 0;
+	while (store[a]->marked == 'Y')
+		a++;
+	if (store[a] == 0)
+		return (-1);				//all marked yes
+	return (a);
+}
+
+int		ft_checkstore(t_store **store)		//finds which isn't marked (old)?
 {
 	int		i;
 
@@ -62,16 +88,11 @@ int		ft_remove(t_grid **grid, t_store **store)
 	int		x;
 	int		y;
 
-	a = 0;
 	x = 0;
 	y = 0;
-	while (store[a] != 0 && store[a]->marked != 'N')
-		a++;
-	if (a - 1 >= 0)
-		a = a - 1;
-	else
+	a = ft_mark_no(store);
+	if (a < 0)
 		return (0);
-	store[a]->marked = 'N';
 	while (grid[x] != 0)
 	{
 		while (grid[x][y].content != 0)
@@ -103,7 +124,7 @@ int		ft_chk_range(int i, int j, t_store **store, int range)
 		printf("chk_range k = [%i]\n", k);
 		buff_x = i + store[a]->stored[k]->y;		//switched x with y, dunno why it works
 		buff_y = j + store[a]->stored[k]->x;
-		if (buff_x > range)
+		if (buff_x => range)
 		{
 			printf("out of range big buff_x[%i] grid x[%i] y[%i] store x[%i] y[%i]\n", buff_x, i, j, store[a]->stored[k]->x, store[a]->stored[k]->y);
 			return (0);
@@ -113,7 +134,7 @@ int		ft_chk_range(int i, int j, t_store **store, int range)
 			printf("out of range buff_x[%i] x neg grid x[%i] y[%i] store x[%i] y[%i]\n", buff_x, i, j, store[a]->stored[k]->x, store[a]->stored[k]->y);
 			return (0);
 		}
-		if (buff_y > range)
+		if (buff_y => range)
 		{
 			printf("out of range buff_y[%i] y big grid x[%i] y[%i] store x[%i] y[%i]\n", buff_y, i, j, store[a]->stored[k]->x, store[a]->stored[k]->y);
 			return (0);
