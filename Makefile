@@ -3,33 +3,48 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wfung <marvin@42.fr>                       +#+  +:+       +#+         #
+#    By: ksaetern <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/01/04 18:33:10 by wfung             #+#    #+#              #
-#    Updated: 2017/01/05 17:41:11 by wfung            ###   ########.fr        #
+#    Created: 2017/03/14 15:41:28 by ksaetern          #+#    #+#              #
+#    Updated: 2017/03/23 17:45:59 by ksaetern         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -Wall -Wextra -Werror
+NAME	=	fillit
 
-NAME = fillit
+CC		=	gcc
 
-SRC = ./*.c 
+FLAG	=	-Wall -Wextra -Werror
 
-OBJS = ./*.o
+SRCS	= 	main.c \
+	   		read.c \
+	   		check.c \
+	   		store.c \
+			solve.c \
+			map.c \
+			place.c \
+	   		
+OBJ =		${SRCS:.c=.o}
 
-INCL = ./&.h
+INCLUDE	=	-I ./libft/ -L ./libft -lft
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	ar rc $(NAME) $(OBJS)
-	ranlib $(NAME)
+$(OBJ): $(SRCS)
+		@$(CC) $(FLAG) -c $*.c
+
+$(NAME): $(OBJ)
+		@make all -C libft
+		@$(CC) $(FLAG) $(INCLUDE) $(OBJ) -o $(NAME)
 
 clean:
-	/bin/rm -f $(OBJS)
+		@make clean -C libft
+		@/bin/rm -f $(OBJ)
 
 fclean: clean
-	/bin/rm -f $(OBJS) $(NAME)
+		@make fclean -C libft
+		@/bin/rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean
